@@ -1,0 +1,12 @@
+*,
+*::after,
+*::before{
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Orbitron', sans-serif;  
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 400;
+  background-image: url(./assets/bg-stars.png);
+  color: #fff;
+}
