@@ -1,4 +1,5 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
 
 import styles from './Intro.module.scss';
 
@@ -13,8 +14,8 @@ const Intro = () => {
 	return (
 		<div className={styles.intro}>
 			<div className={styles.btns}>
-				<a href='/game' className={styles.play_btn}>Play</a>
-				<a href='/scores' className={styles.scores_btn}>Scores</a>
+				<Link to='/game' className={styles.play_btn}>Play</Link>
+				<Link to='/scores' className={styles.scores_btn}>Scores</Link>
 			</div>
 			<img className={styles.spaceship} src={spaceship} alt="Spaceship" />
 			<img className={styles.alien__1} src={alien_1} alt="Alien 1" />
