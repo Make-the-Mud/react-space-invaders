@@ -14,8 +14,8 @@ const Intro = () => {
 	return (
 		<div className={styles.intro}>
 			<div className={styles.btns}>
-				<Link to='/game' className={styles.play_btn}>Play</Link>
-				<Link to='/scores' className={styles.scores_btn}>Scores</Link>
+				<Link to='/game' className={styles.play__btn}>Play</Link>
+				<Link to='/scores' className={styles.scores__btn}>Scores</Link>
 			</div>
 			<img className={styles.spaceship} src={spaceship} alt="Spaceship" />
 			<img className={styles.alien__1} src={alien_1} alt="Alien 1" />
