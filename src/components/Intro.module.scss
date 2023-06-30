@@ -19,7 +19,7 @@
 			max-width: 32vw;
 			font-size: 2.4rem;
 			border: 2px solid #fff;
-			transition: transform 0.3s ease-in-out;
+			transition: transform .3s ease-in-out;
 
 			&:hover{
 				transform: scale(.95);
@@ -28,7 +28,7 @@
 		}
 
 		.scores__btn {
-			padding: 42px 59px;
+			padding: 2.1rem 2.95rem;
 			max-width: 19vw;
 			margin-top: 3.5rem;
 			font-size: 1.2rem;
@@ -38,7 +38,7 @@
 	
 	img{
 		position: absolute;
-		transition: .3s ease-in-out;
+		transition: transform 1s ease-in-out;
 		border-radius: 15px;
 
 		&:hover{
@@ -54,7 +54,7 @@
 	}
 
 	.alien__1 {
-		width: 4vw;
+		width: 5vw;
 		top: 55%;
 		left: 10%;
 		transform: rotate(-15deg);
@@ -68,7 +68,7 @@
 	}
 
 	.alien__3 {
-		width: 5vw;
+		width: 6vw;
 		top: 80%;
 		right: 10%;
 		transform: rotate(18deg);

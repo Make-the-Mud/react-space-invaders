@@ -4,11 +4,11 @@ import {Link} from 'react-router-dom';
 import styles from './Intro.module.scss';
 
 import spaceship from '../assets/spaceship.svg';
-import alien_1 from '../assets/alien-1.svg';
-import alien_2 from '../assets/alien-2.svg';
-import alien_3 from '../assets/alien-3.svg';
-import alien_4 from '../assets/alien-4.svg';
-import alien_5 from '../assets/alien-5.svg';
+import alien_1 from '../assets/alien-circle-1.svg';
+import alien_2 from '../assets/alien-circle-2.svg';
+import alien_3 from '../assets/alien-circle-3.svg';
+import alien_4 from '../assets/alien-circle-4.svg';
+import alien_5 from '../assets/alien-circle-5.svg';
 
 const Intro = () => {
 	return (

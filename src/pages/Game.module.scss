@@ -1,0 +1,46 @@
+.game{
+	display: block;
+
+	.game__window{
+		width: 100vw;
+		height: 78.5vh;
+		display: flex;
+		justify-content: center;
+		margin: 0 auto;
+		border: 2px solid #fff;
+		border-top: 0;
+		position: relative;
+		
+	}
+
+	.gameover__window{
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+		color: white;
+		font-size: 8rem;
+		position: absolute;
+		top: 35%;
+		left: 50%;
+		transform: translate(-50%, 50%);
+
+		.gameover__title{
+			font-size: 3.2rem;
+		}
+
+		.tryagain__btn{
+			text-decoration: none;
+			margin-top: 3.5rem;
+			border: 2px solid #fff;
+			padding: 2.1rem 2.95rem;
+			max-width: 19vw;
+			font-size: 1.2rem;
+			transition: transform .3s ease-in-out;
+
+			&:hover {
+					transform: scale(0.95);
+			}
+		}
+	}
+}
