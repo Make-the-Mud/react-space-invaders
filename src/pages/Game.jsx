@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
 
 import HeaderMenu from '../components/HeaderMenu';
 import Player from '../components/Player';
@@ -18,7 +17,7 @@ const BULLET_WIDTH = 5;
 const BULLET_HEIGHT = 15;
 
 const PLAYER_SPEED = 10;
-const ENEMY_SPEED = 3;
+const ENEMY_SPEED = 0.25;
 const BULLET_SPEED = 5;
 
 const ENEMY_ROWS = 5;
@@ -33,7 +32,8 @@ const Game = () => {
 	const [enemies, setEnemies] = useState([]);
 	const [bullets, setBullets] = useState([]);
 	const [score, setScore] = useState(0);
-	const [isGameOver, setIsGameOver] = useState(false);
+	const [isGameActive, setIsGameActive] = useState(true);
+	const [isGamePaused, setIsGamePaused] = useState(false);
 	const gameRef = useRef(null);
 
 
@@ -55,6 +55,16 @@ const Game = () => {
 			bulletBottom >= enemyTop &&
 			bulletTop <= enemyBottom
 		);
+	};
+
+
+
+	const startGame = () => {
+		setIsGameActive(true);
+		setPlayerX(GAME_WIDTH / 2);
+		setEnemies([]);
+		setBullets([]);
+		setScore(0);
 	};
 
 
@@ -81,7 +91,7 @@ const Game = () => {
 
 	useEffect(() => {
 		const animate = () => {
-			if(!isGameOver) {
+			if(isGameActive) {
 				setEnemies((prevEnemies) =>
 					prevEnemies.map((enemy) => ({
 						...enemy,
@@ -106,7 +116,7 @@ const Game = () => {
 				);
 
 				if(isEnemyReachedBottom || isPlayerCollided) {
-					setIsGameOver(true);
+					setIsGameActive(false);
 				} else {
 					gameRef.current = requestAnimationFrame(animate);
 				}
@@ -116,16 +126,17 @@ const Game = () => {
 		gameRef.current = requestAnimationFrame(animate);
 
 		return () => cancelAnimationFrame(gameRef.current);
-	}, [isGameOver, enemies, playerX]);
+	}, [isGameActive, enemies, playerX]);
 
 
 
 	useEffect(() => {
 		const createEnemies = () => {
+			if (!isGameActive) return;
 			const newEnemies = [];
 
 			for (let row = 0; row < ENEMY_ROWS; row++) {
-				const y = row * (ENEMY_HEIGHT + ENEMY_VERTICAL_PADDING) + ENEMY_HEIGHT / 2;
+				const y = row * (ENEMY_HEIGHT + ENEMY_VERTICAL_PADDING) + ENEMY_HEIGHT / 2 + 200;
 
 				for(let col = 0; col < ENEMY_COLUMNS; col++){
 					const x = col * (ENEMY_WIDTH + ENEMY_HORIZONTAL_PADDING) +
@@ -139,12 +150,13 @@ const Game = () => {
 		};
 
 		createEnemies();
-	}, []);
+	}, [isGameActive]);
 
 
 
 	useEffect(() => {
 		const handleCollision = () => {
+			if (!isGameActive) return;
 			bullets.forEach((bullet, bulletIndex) => {
 				enemies.forEach((enemy, enemyIndex) => {
 					if (checkCollision(bullet, enemy)) {
@@ -165,20 +177,25 @@ const Game = () => {
 			<HeaderMenu score={score} />
 			<div className={styles.game__window} />
 
-			<Player x={playerX} y={GAME_HEIGHT - PLAYER_HEIGHT / 2} />
+			{isGameActive && (
+				<>
+					<Player x={playerX} y={GAME_HEIGHT - PLAYER_HEIGHT / 2} />
 
-			{enemies.map((enemy, index) => (
-				<Enemy key={index} x={enemy.x} y={enemy.y} />
-			))}
+					{enemies.map((enemy, index) => (
+						<Enemy key={index} x={enemy.x} y={enemy.y} />
+					))}
 
-			{bullets.map((bullet, index) => (
-				<Bullet  key={index} x={bullet.x} y={bullet.y} />
-			))}
+					{bullets.map((bullet, index) => (
+						<Bullet  key={index} x={bullet.x} y={bullet.y} />
+					))}
+				</>
+			)}
+			
 
-			{isGameOver && (
+			{!isGameActive && (
 				<div className={styles.gameover__window}>
-					<div className={styles.gameover__title}>Game Over</div>
-					<Link to={'/game'} className={styles.tryagain__btn}>Try again</Link>
+					<div className={styles.gameover__title}>Game Over !</div>
+					<button className={styles.tryagain__btn} onClick={startGame}>Try again</button>
 				</div>
 			)}
 		</div>

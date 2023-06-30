@@ -4,13 +4,11 @@
 	.game__window{
 		width: 100vw;
 		height: 78.5vh;
-		display: flex;
-		justify-content: center;
 		margin: 0 auto;
 		border: 2px solid #fff;
 		border-top: 0;
 		position: relative;
-		
+		display: block;
 	}
 
 	.gameover__window{
