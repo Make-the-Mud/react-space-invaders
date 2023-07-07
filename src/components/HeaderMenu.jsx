@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 import styles from './HeaderMenu.module.scss';
 
-const HeaderMenu = ({score, startGame}) => {
+const HeaderMenu = ({score}) => {
 	return (
 		<div className={styles.headerMenu}>
 			<Link to={'/'} className={styles.home__btn}>Home</Link>

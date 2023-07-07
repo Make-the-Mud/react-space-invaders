@@ -1,7 +1,7 @@
 import React from 'react';
 
-const ENEMY_WIDTH = 30;
-const ENEMY_HEIGHT = 30;
+const ENEMY_WIDTH = 20;
+const ENEMY_HEIGHT = 20;
 
 const Enemy = ({ x, y }) => {
 	return (

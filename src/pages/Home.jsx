@@ -6,7 +6,7 @@ import Intro from '../components/Intro';
 const Home = () => {
 	return (
 		<div className="home">
-			<Header />
+			<Header title={'React Space Invaders'} />
 			<Intro />
 		</div>
 	)
